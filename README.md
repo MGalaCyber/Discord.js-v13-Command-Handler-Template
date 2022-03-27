@@ -18,6 +18,11 @@
 </div>
 
 ---------
+<p align="center">
+  <a href="https://discord.gg/VzGNhtmmfB"><img src="https://discordapp.com/api/guilds/826406117658853417/widget.png?style=banner2" alt="Discord server"></a>
+</p>
+
+---------
 # Discord.js v13 Handler Template
 
 ---------
