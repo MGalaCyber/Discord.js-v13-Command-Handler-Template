@@ -10,7 +10,7 @@
  * 
  * 
  * @CREDITS : MGalaCyber Development
- * @VERSION : 1.0.0
+ * @VERSION : 5.0.0
  * @GITHUB : MGalaCyber
  * 
  *
