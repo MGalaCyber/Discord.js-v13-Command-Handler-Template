@@ -1,0 +1,48 @@
+{
+    
+"Application_Information": "",
+        "TOKEN": "Config in .env file or set it in the environment variable in your hostinger project",
+        "CLIENT_ID": "",
+        "CLIENT_SECRET": "",
+        "APPLICATION_ID": "",
+        "PUBLIC_KEY": "",
+
+"DEVELOPER": "",
+        "OWNER": "",
+        "CO_OWNER": "",
+        "TEAM_1": "",
+        "TEAM_2": "",
+        "TEAM_3": "",
+
+"SETTINGS": "",
+        "PREFIX": ">",
+        "DEVPREFIX": "",
+        "DefaultCooldown": 0,
+        "ErrorChannel": "",
+        "SuccessChannel": "",
+        "LogChannel": "",
+        "NEWGUILD": "",
+        "LEAVEGUILD": "",
+
+"CONNECTIONS": "",
+        "MONGO_URI": "Config in .env file or set it in the environment variable in your hostinger project",
+        "OAUTHO2_INVITE": "",
+        "PRIVACY_POLICE": "",
+        "TERMS_OF_SERVICE": "",
+        "INTERACTIONS_ENDPOINT": "",
+        "DASHBOARD": "",
+        "WEBSITE": "",
+        "DISCORD_SUPPORT": "",
+        "PATREON": "",
+        "PAYPAL": "",
+        "SAWERIA": "",
+        "KOFIC": "",
+    
+"SERVER_OFFICIAL": "",
+        "Guild_ID_1": "",
+        "Guild_ID_2": "",
+    
+    "SERVER_TEST": "",
+        "Guild_Test_1": "",
+        "Guild_Test_2": ""
+}

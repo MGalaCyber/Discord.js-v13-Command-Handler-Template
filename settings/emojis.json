@@ -1,0 +1,59 @@
+{
+    "Message": "",
+        "SUCCESS" : "<:Yes:893078238635642931>",
+        "ERROR" : "<:No:893078238522384426>",
+
+        "ENABLE": "",
+        "DISABLE": "",
+    
+    "Progress_bar": "",
+        "LeftIndicator": "",
+        "RightIndicator": "",
+    
+    "Music": "",
+        "Play" : "▶",
+        "Pause": "⏸",
+        "Stop": "⏹",
+
+        "Playing": "🎶",
+        "Lyrics": "📃",
+        "Time": "⏳",
+        
+        "Reduce_volume": "🔉",
+        "Raise_volume": "🔊",
+        "Toggle_mute": "🔇",
+        
+        "repeat_mode": "🔁",
+        "Replay_track": "🔂",
+        "autoplay_mode": "",
+        "shuffle": "🔀",
+
+        "Rewind": "⏪",
+        "Forward": "⏩",
+        "Previous_track": "⏮",
+        "Skip_track": "⏭️",
+        
+        "show_queue": "📑",
+        "show_current_track": "🩸",
+        "Add_favorite": "⭐",
+        "Delete": "",
+    
+    "System": "",
+        "Ping": "🏓",
+        "Loading": "⏳",
+        "Search": "🔎",
+        "Bot": "🤖",
+        "Human": "👤",
+        "Dj": "🎧",
+        "Leave": "",
+        "Setup": "⚙️",
+        "Premium": "💰",
+        "Report": "",
+        "ModMail": "",
+    
+    "Buttons": "",
+        "Previous_Page" : "",
+        "Next_Page" : "",
+        "End_Previous_Page" : "",
+        "End_Next_Page" : ""
+}

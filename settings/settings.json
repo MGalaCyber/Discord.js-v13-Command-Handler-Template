@@ -1,0 +1,6 @@
+{
+    "antiCrash": true,
+    "ping_message": true,
+    "delete_command": false,
+    "somethingwentwrong_cmd": false
+}
