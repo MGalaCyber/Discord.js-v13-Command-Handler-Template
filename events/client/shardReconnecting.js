@@ -1,16 +1,11 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'shardReconnecting',
-    once: true,
-
-    async execute(client, Discord, id) {
-        console.log(`[SHARD RECONNECTING] `.bold.red + `${id}`.yellow);
-    }
+module.exports = async (client, id) => {
+    console.log(`[SHARD RECONNECTING] `.bold.red + `${id}`.yellow);
 }
 
 

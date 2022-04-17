@@ -1,73 +1,32 @@
 //=====================================| Import the Module |=====================================\\
 
-const { Guild_Test_1 } = require(`${process.cwd()}/settings/config.json`);
 const colors = require('colors');
-const { glob } = require('glob');
-const { promisify } = require('util');
-const globPromise = promisify(glob);
+const { readdirSync } = require('fs');
 
-//=====================================| Code |=====================================\\
+// ========================================| Anti Crash System Script |======================================= \\
 
-module.exports = async (client, Discord) => {
-    const slashCommands = await globPromise(`${process.cwd()}/slashCommands/*/*.js`);
-
-    const arrayOfSlashCommands = [];
-    slashCommands.map((value) => {
-        const file = require(value);
-        if (!file.name) return;
-        client.slashCommands.set(file.name, file);
-
-        console.log(`[SLASH COMMAND] `.bold.green + `[${file.name}] `.cyan + `was loaded!`.yellow);
-
-        // Code for Context Menu
-        if (['MESSAGE', 'USER'].includes(file.type)) delete file.description;
-
-        // Code for UserPerms
-        if (file.userPerms) file.defaultPermission = false;
-
-        arrayOfSlashCommands.push(file);
-    });
+module.exports = async (client) => {
+    const slashCommandsArray = [];
+    readdirSync(`${process.cwd()}/slashCommands/`)
+    .forEach((dir) => {
+        readdirSync(`${process.cwd()}/slashCommands/${dir}/`)
+        .filter((file) => file.endsWith('.js'))
+        .forEach((file) => {
+            let pull = require(`${process.cwd()}/slashCommands/${dir}/${file}`);
+            client.slashCommands.set(pull.name, pull);
+            slashCommandsArray.push(pull);
+        })
+        console.log(`[SLASH COMMANDS] `.bold.green + `[${slashCommandsArray.length}] `.cyan + `in `.yellow + `${dir} `.magenta + `was loaded!`.yellow);
+    })
 
     client.on('ready', async () => {
-        const guild = client.guilds.cache.get(Guild_Test_1);
-        await guild.commands.set(arrayOfSlashCommands).then((cmd) => {
-            const getRoles = (commandName) => {
-                const permissions = arrayOfSlashCommands.find(
-                    (x) => x.name === commandName
-                ).userPerms;
-
-                if (!permissions) return null;
-                return guild.roles.cache.filter(
-                    (x) => x.permissions.has(permissions) && !x.managed
-                );
-            };
-
-            const fullPermissions = cmd.reduce((accumulator, x) => {
-                const roles = getRoles(x.name);
-                if (!roles) return accumulator;
-
-                const permissions = roles.reduce((a, v) => {
-                    return [
-                        ...a,
-                        {
-                            id: v.id,
-                            type: 'ROLE',
-                            permission: true,
-                        },
-                    ];
-                }, []);
-
-                return [
-                    ...accumulator,
-                    {
-                        id: x.id,
-                        permissions,
-                    },
-                ];
-            }, []);
-
-            guild.commands.permissions.set({ fullPermissions });
-        });
+        if (client.deploySlash.enabled) {
+            if (client.deploySlash.guild) {
+                client.guilds.cache.get(client.deploySlash.guild).commands.set(slashCommandsArray);
+            } else {
+                client.application.commands.set(slashCommandsArray);
+            }
+        }
     })
 }
 

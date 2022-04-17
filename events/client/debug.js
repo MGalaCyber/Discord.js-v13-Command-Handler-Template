@@ -1,16 +1,11 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'debug',
-    once: true,
-
-    async execute(client, Discord, info) {
-        console.log(`[DEBUG] `.bold.green + `${info}`.yellow);
-    }
+module.exports = async (client, info) => {
+    console.log(`[DEBUG] `.bold.green + `${info}`.yellow);
 }
 
 

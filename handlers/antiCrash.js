@@ -1,26 +1,26 @@
 //=====================================| Import the Module |=====================================\\
 
-const client = require(`${process.cwd()}/index`).client
+const colors = require('colors');
 
 // ========================================| Anti Crash System Script |======================================= \\
 
-module.exports = (client, Discord) => {
+module.exports = async (client) => {
 
 process.on('unhandledRejection', (err, reason, p) => {
-    console.log('Unhandled Rejection at: Promise:', p, 'reason:', reason);
+    console.log(`[UNHANDLED REJECTION] `.bold.red + `at: Promise:`.purple, p, 'reason:'.purple, reason);
     console.log(err, p)
   })
-  process.on('uncaughtException', (err, origin) => {
-    console.log('Uncaught Exception:', err, origin);
-    console.log(err, origin)
+process.on('uncaughtException', (err, origin) => {
+  console.log(`[UNCAUGHT EXCEPTION] `.bold.red, err, origin);
+  console.log(err, origin)
   })
-  process.on('uncaughtExceptionMonitor', (err, origin) => {
-    console.log('Uncaught Exception:', err, origin);
-    console.log(err, origin)
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+  console.log(`[UNCAUGHT EXCEPTION MONITOR] `.bold.red, err, origin);
+  console.log(err, origin)
   })
-  process.on('multipleResolves', (type, promise, reason) => {
-    console.log('Multiple Resolves:', type, promise, reason);
-    console.log(type, promise, reason)
+process.on('multipleResolves', (type, promise, reason) => {
+  console.log(`[MULTIPLE RESOLVES] `.bold.red, type, promise, reason);
+  console.log(type, promise, reason)
   })    
 }
 

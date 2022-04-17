@@ -1,21 +1,16 @@
 //=====================================| Import the Module |=====================================\\
 
-const client = require(`${process.cwd()}/index`).client;
-const Discord = require('discord.js');
-const colors = require('colors');
-const dotenv = require('dotenv').config();
-const ms = require('ms');
-const { PREFIX } = require(`${process.cwd()}/settings/config.json`);
 const { author, version } = require(`${process.cwd()}/package.json`);
+const { PREFIX } = require(`${process.cwd()}/settings/config.json`);
+const Discord = require('discord.js');
+require('dotenv').config();
+const ms = require('ms');
+require('colors');
 
 //=====================================| Code |=====================================\\
 
-module.exports = {
-    name: 'ready',
-    once: true,
-    
-    async execute(client, Discord) {
-        console.table({
+module.exports = async (client) => {
+    console.table({
         'Name': client.user.tag,
         'Author': `${author}`,
         'Version': `v${version}`,
@@ -26,10 +21,10 @@ module.exports = {
         'Guilds': client.guilds.cache.size,
         'Users': client.users.cache.size,
         'Channels': client.channels.cache.size,
-        'Commands': client.commands.size,
-        'slashCommands': client.slashCommands.size,
-        'ping': ms(client.uptime),
+        'Normal Commands': client.commands.size,
+        'Slash Commands': client.slashCommands.size,
         'Memory Usage': `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
+        'CPU Usage': `${(process.cpuUsage().system / 1024 / 1024).toFixed(2)}%`,
         'Platform': process.platform,
         'Arch': process.arch,
       })
@@ -37,8 +32,9 @@ module.exports = {
 
     // Animated Status Presence
     const activities = [
-        `${PREFIX}help | ${client.guilds.cache.size} Guilds`,
-        `${PREFIX}help | ${client.users.cache.size} Users`,
+        `${PREFIX}help | /help => ${client.guilds.cache.size} Guilds`,
+        `${PREFIX}help | /help => ${client.users.cache.size} Users`,
+        `${PREFIX}help | /help => ${client.channels.cache.size} Channels`,
         `${PREFIX}help | Invite me Now!`
     ];
     setInterval(() => {
@@ -47,8 +43,7 @@ module.exports = {
         type: "LISTENING", // PLAYING, STREAMING, LISTENING, WATCHING
         url: "https://www.twitch.tv/"
       });
-    }, 5000);
-    }
+    }, 30000);
 }
 
 

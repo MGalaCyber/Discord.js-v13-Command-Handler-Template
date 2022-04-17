@@ -1,49 +1,39 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
-const { PREFIX } = require(`${process.cwd()}/settings/config.json`);
-const { Client, CommandInteraction, MessageEmbed } = require('discord.js');
+const { errorCmdLogs2 } = require(`${process.cwd()}/functions/errorCmdLogs.js`);
+const { Client, Interaction } = require('discord.js');
 
-const prefix = PREFIX;
+/**
+ * 
+ * @param {Client} client 
+ * @param {Interaction} interaction 
+ */
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'interactionCreate',
-
-    /**
-     * @param {Client} client
-     * @param {CommandInteraction} interaction
-     */
-
-    async execute(interaction, client) {
-    // Slash Command Handling
+module.exports = async (client, interaction) => {
+    try {
         if (interaction.isCommand()) {
-            const command = client.slashCommands.get(interaction.commandName);
-            if (!command) return interaction.followUp(`Command ${interaction.commandName} not found.`) && client.slashCommands.delete(interaction.commandName);
-
+            const cmd = client.slashCommands.get(interaction.commandName);
+            if (!cmd) return interaction.reply({ content: '❌ An error occured.' }).catch(() => null);
+    
             const args = [];
-            
+    
             for (let option of interaction.options.data) {
-                if (option.type === "SUB_COMMAND") {
+                if (option.type === 'SUB_COMMAND') {
                     if (option.name) args.push(option.name);
                     option.options?.forEach((x) => {
                         if (x.value) args.push(x.value);
                     });
                 } else if (option.value) args.push(option.value);
             }
-            interaction.member = interaction.guild.members.cache.get(interaction.user.id);
+            interaction.member = interaction.guild.members.cache.get(interaction.user.id) || await interaction.guild.members.fetch(interaction.user.id).catch(() => null);
     
-            if (!interaction.member.permissions.has(command.userPerms || [])) return interaction.followUp({ content: "You do not have permission to use this command" });
+            cmd.run(client, interaction, args, '/');
+        }
 
-            command.execute(client, interaction, args, prefix);
-        }    
-
-    // Context Menu Handling (comming soon for working)
-    if (interaction.isContextMenu()) {
-        await interaction.deferReply({ ephemeral: false });
-        const command = client.slashCommands.get(interaction.commandName);
-        if (command) command.execute(client, interaction, prefix);
-    }        
+    } catch (error) {
+        errorCmdLogs2(client, interaction, error);
     }
 }
 

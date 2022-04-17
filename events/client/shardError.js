@@ -1,17 +1,12 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'shardError',
-    once: true,
-
-    async execute(client, Discord, error, id) {
-        console.log(`[SHARD ID ERROR] `.bold.red + `${id}`.yellow);
-        console.log(`[SHARD ERROR] `.bold.red + `${error}`.yellow);
-    }
+module.exports = async (client, error, id) => {
+    console.log(`[SHARD ID ERROR] `.bold.red + `${id}`.yellow);
+    console.log(`[SHARD ERROR] `.bold.red + `${error}`.yellow);
 }
 
 

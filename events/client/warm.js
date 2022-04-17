@@ -4,9 +4,8 @@ const colors = require('colors');
 
 //=====================================| Code |=====================================\
 
-module.exports = async (client, id, replayedEvents) => {
-    console.log(`[SHARD ID RESUME] `.bold.green + `${id}`.yellow);
-    console.log(`[SHARD RESUME] `.bold.green + `${replayedEvents}`.yellow);
+module.exports = async (client, error) => {
+    console.log(`[WARN] `.bold.yellow + `${error}`.yellow);
 }
 
 

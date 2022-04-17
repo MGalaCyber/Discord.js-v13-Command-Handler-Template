@@ -1,36 +1,50 @@
 //=====================================| Import the Module |=====================================\\
 
+const { errorCmdLogs1 } = require(`${process.cwd()}/functions/errorCmdLogs.js`);
+const { author, version } = require(`${process.cwd()}/package.json`);
+const { loadingicon1 } = require(`${process.cwd()}/settings/embed.json`);
 const { MessageEmbed } = require('discord.js');
-const { authoricon } = require(`${process.cwd()}/settings/embed.json`);
 const ms = require('ms');
-const { name, author, version } = require(`${process.cwd()}/package.json`);
 
 //=====================================| Code |=====================================\\
 
 module.exports = {
     name: 'ping',
-    cooldown: 5,
-    aliases: ['pong', 'latency'],
-    description: 'Ping the bot',
+    aliases: ['ping', 'latency'],
+    cooldown: 15,
+    category: '❓ info',
+    ownerOnly: false,
+    guildOnly: false,
+    nsfwOnly: false,
+    botPerms: ['SEND_MESSAGES', 'EMBED_LINKS'],
+    userPerms: ['SEND_MESSAGES'],
+    descriptions: 'Show the bot\'s ping to the Discord API.',
+    usage: 'ping',
+    type: 'bot',
 
-    async execute(message, args, client, prefix, Discord) {
-        // First
-        const msgembed = new MessageEmbed()
-        .setAuthor('Pinging...', authoricon)
-        .setColor('YELLOW');
-        const msg = await message.channel.send({embeds: [msgembed]})
-        setTimeout(() => {
-        // Second
-        let embed = new MessageEmbed()
-        .setTitle(`Returns Latency And API Ping`)
-        .addField('⌛ Websocket Latency', `\`${Math.floor(msg.createdAt - message.createdAt)}ms\``)
-        .addField('📡 API Latency', `\`${Math.round(client.ws.ping)}ms\``)
-        .setColor("GREEN")
-        .setFooter(`Requested by: ${message.author.tag} | © ${author} - ${name} v${version}`, message.author.avatarURL())
-        
-        message.reply({embeds: [embed], allowedMentions: { repliedUser: false } }).then(m => setTimeout(() => m.delete(), 15000));
-        msg.delete();
-        }, 1500) 
+    async execute(message, args, client, prefix) {
+        try {
+            // First
+            const msgembed = new MessageEmbed()
+            .setAuthor('Pinging...', loadingicon1)
+            .setColor('YELLOW');
+            const msg = await message.channel.send({embeds: [msgembed]})
+            setTimeout(() => {
+            // Second
+            let embed = new MessageEmbed()
+            .setTitle(`Returns Latency And API Ping`)
+            .addField('⌛ Websocket Latency', `\`${Math.floor(msg.createdAt - message.createdAt)}ms\``)
+            .addField('📡 API Latency', `\`${Math.round(client.ws.ping)}ms\``)
+            .setColor("#00FF7F")
+            .setFooter(`Requested by: ${message.author.tag} | © ${author} - ${message.client.user.tag} v${version}`, message.author.avatarURL())
+            
+            message.reply({embeds: [embed], allowedMentions: { repliedUser: false } }).then(m => setTimeout(() => m.delete(), 15000));
+            msg.delete();
+            }, 1500) 
+
+        } catch (error) {
+          errorCmdLogs1(client, message, error);
+        }
     }
 }
 

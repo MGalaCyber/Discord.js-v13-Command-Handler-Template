@@ -8,7 +8,7 @@
         "PUBLIC_KEY": "",
 
 "DEVELOPER": "",
-        "OWNER": "",
+        "OWNER": "682211671728455702",
         "CO_OWNER": "",
         "TEAM_1": "",
         "TEAM_2": "",
@@ -16,10 +16,9 @@
 
 "SETTINGS": "",
         "PREFIX": ">",
-        "DEVPREFIX": "",
-        "DefaultCooldown": 0,
         "ErrorChannel": "",
         "SuccessChannel": "",
+        "LogsTerminal": "",
         "LogChannel": "",
         "NEWGUILD": "",
         "LEAVEGUILD": "",
@@ -37,6 +36,9 @@
         "PAYPAL": "",
         "SAWERIA": "",
         "KOFIC": "",
+        "VOTE_TopGG": "",
+        "VOTE_DiscordBotList": "",
+        "VOTE_DiscordBoats": "",
     
 "SERVER_OFFICIAL": "",
         "Guild_ID_1": "",

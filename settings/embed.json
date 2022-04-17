@@ -1,8 +1,16 @@
 {
   "color": "#11FF28",
-  "successcolor": "00FF00",
+  "successcolor": "#00FF00",
+  "stanbycolor": "#FFFFFF",
   "wrongcolor": "#FF0000",
-  "footertext": "Application name | powered by galacyber.xyz",
-  "footericon": "https://cdn.discordapp.com/attachments/891318615662555136/891319057343713350/Circle_Logo.png",
-  "authoricon": "https://cdn.discordapp.com/attachments/893741033081421845/904294347208527872/Loading.gif"
+
+  "footertext": "Your Application Name | powered by galacyber.xyz",
+  "footericon": "",
+  "authoricon": "",
+
+  "loadingicon1": "https://cdn.discordapp.com/attachments/893741033081421845/904294347208527872/Loading.gif",
+  "loadingicon2": "",
+  "loadingicon3": "",
+
+  "mongodbicon": "https://cdn.discordapp.com/attachments/921614775421640714/963071445351678042/mongodb.png"
 }

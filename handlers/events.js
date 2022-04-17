@@ -1,26 +1,22 @@
 //=====================================| Import the Module |=====================================\\
 
-const client = require(`${process.cwd()}/index`).client;
-const Discord = require('discord.js');
-const fs = require('fs');
+const colors = require('colors');
+const { readdirSync } = require('fs');
 
-//=====================================| Code |=====================================\\
+// ========================================| Anti Crash System Script |======================================= \\
 
-module.exports = (client, Discord) => {
-    const eventFolders = fs.readdirSync(`${process.cwd()}/events`);
-    for (const folder of eventFolders) {
-        const eventFiles = fs.readdirSync(`${process.cwd()}/events/${folder}`).filter(file => file.endsWith('.js'));
-        for (const file of eventFiles) {
-            const event = require(`${process.cwd()}/events/${folder}/${file}`);
-            if (event.once) {
-                client.once(event.name, async (...args) => await event.execute(client, Discord, ...args));
-            } else {
-                client.on(event.name, async (...args) => await event.execute(...args, client, Discord));
-            };
-        };
-        console.log(`[EVENT] `.bold.green + `[${eventFiles.length}] `.cyan + `in `.yellow + `${folder} `.magenta + `was loaded!`.yellow);
-    };
-};
+module.exports = async (client) => {
+    const load_dir = (dir) => {
+        const events = readdirSync(`${process.cwd()}/events/${dir}`).filter(d => d.endsWith('.js'));
+        for (const file of events) {
+            const pull = require(`${process.cwd()}/events/${dir}/${file}`);
+            const eventName = file.split('.')[0];
+            client.on(eventName, pull.bind(null, client));
+        }
+        console.log(`[EVENTS] `.bold.green + `[${events.length}] `.cyan + `in `.yellow + `${dir} `.magenta + `was loaded!`.yellow);
+    }
+    ['client', 'message'].forEach(e => load_dir(e));
+}
 
 
 /**

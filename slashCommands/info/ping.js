@@ -1,13 +1,25 @@
 //=====================================| Import the Module |=====================================\
 
-const colors = require('colors');
+const { errorCmdLogs2 } = require(`${process.cwd()}/functions/errorCmdLogs.js`);
 
 //=====================================| Code |=====================================\
 
-module.exports = async (client, id, replayedEvents) => {
-    console.log(`[SHARD ID RESUME] `.bold.green + `${id}`.yellow);
-    console.log(`[SHARD RESUME] `.bold.green + `${replayedEvents}`.yellow);
-}
+module.exports = {
+    name: 'ping',
+    description: 'Show the bot/s ping to the Discord API.',
+
+    run: async (client, interaction, args, prefix) => {
+        try {
+            interaction.reply({
+                content: `Pong! ${client.ws.ping}ms`,
+                ephemeral: true
+            }).catch(() => null);
+
+        } catch (error) {
+            errorCmdLogs2(client, interaction, error);
+        }
+    },
+};
 
 
 /**

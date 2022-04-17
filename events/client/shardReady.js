@@ -1,16 +1,11 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'shardReady',
-    once: true,
-
-    async execute(client, Discord, id) {
-        console.log(`[SHARD READY] `.bold.green + `${id}`.yellow);
-    }
+module.exports = async (client, id) => {
+    console.log(`[SHARD READY] `.bold.green + `${id}`.yellow);
 }
 
 

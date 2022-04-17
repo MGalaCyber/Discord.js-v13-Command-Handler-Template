@@ -1,86 +1,58 @@
-/**********************************************************************| INFORMATION |**********************************************************************
+/******************************************************************************************| INFORMATION |******************************************************************************************
  * @INFO :
  * 1.0 Import the required modules.
-    * 1.1 Validating script for the advertisement.
- * 2.0 Create the Discord bot Client.
- * 3.0 Create the commands for the bot.
- * 4.0 Create/Custom the events for the bot.
- * 5.0 Create the functions for the bot.
- * 6.0 Create/Custom the variables for the bot.
- * 
- * 
- * @CREDITS : MGalaCyber Development
- * @VERSION : 5.0.0
+    * 1.1 Validating script for the advertisement.                                                  //////////////////////////////////////////////////////////////////////////////////////////////
+ * 2.0 Create the Discord bot Client.                                                               ////                                                                                      ////
+ * 3.0 Create the commands for the bot.                                                             \\\\                                        @NOTICE                                       \\\\
+ * 4.0 Create/Custom the events for the bot.                                                        ////    This source code is public, it is forbidden to sell and buy this handler code     ////
+ * 5.0 Create the functions for the bot.                                                            \\\\       if you want to use this handler code, please give credit from the owner        \\\\
+ * 6.0 Create/Custom the variables for the bot.                                                     ////    it is forbidden to change the contents of the code (especially the core code)     ////
+ *                                                                                                  \\\\                  it is forbidden to delete the credit in the code!                   \\\\
+ *                                                                                                  ////                                                                                      ////
+ * @CREDITS : MGalaCyber Development                                                                //////////////////////////////////////////////////////////////////////////////////////////////
+ * @VERSION : 8.5.0
  * @GITHUB : MGalaCyber
- * 
- *
-//////////////////////////////////////////////////////////////////////////////////////////////
-////                                                                                      ////
-\\\\                                        @NOTICE                                       \\\\
-////    This source code is public, it is forbidden to sell and buy this handler code     ////
-\\\\       if you want to use this handler code, please give credit from the owner        \\\\
-////    it is forbidden to change the contents of the code (especially the core code)     ////
-\\\\                  it is forbidden to delete the credit in the code!                   \\\\
-////                                                                                      ////
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-******************************************************************| All Right Reserved! |******************************************************************/
-
+**************************************************************************************| All Right Reserved! |**************************************************************************************/
 
 //=====================================| Import the Module |=====================================\\
 
-const Discord = require('discord.js');
-const mongoose = require('mongoose');
-const fs = require('fs');
-const colors = require('colors')
-const ms = require('ms');
-const dotenv = require('dotenv').config();
+const { Discord, MessageEmbed, MessageAttachment, Client, Collection } = require('discord.js');
+const clientSettingsObject = require(`${process.cwd()}/functions/clientSettingsObject.js`);
 const settings = require(`${process.cwd()}/settings/settings.json`);
-const client = new Discord.Client({
-    messageCacheMaxSize: 50,
-    messageCacheLifetime: 60,
-    messageSweepInterval: 60,
-    disableEveryone: false,
-    shards: 'auto',
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-    intents: 32767
-});
+const client = new Client(clientSettingsObject());
+const ms = require('ms');
+require('dotenv').config();
+require('colors');
 
-// ========================================| Collections |======================================= \\
+//=====================================| DEPLOY SLASH COMMANDS |=====================================\\
 
-client.commands = new Discord.Collection();
-client.slashCommands = new Discord.Collection();
-client.buttons = new Discord.Collection();
-client.aliases = new Discord.Collection();
-client.categories = new Discord.Collection();
-client.cooldowns = new Discord.Collection();
-client.events = new Discord.Collection();
+client.deploySlash = {
+    enabled: settings.globalSlash,
+    guild: settings.guildSlashOnly
+}
 
-module.exports = client;
+//=====================================| COLLECTIONS |=====================================\\
 
-// ========================================| Handlers Scripts |======================================= \\
+client.commands = new Collection();
+client.slashCommands = new Collection();
+client.buttons = new Collection();
+client.aliases = new Collection();
+client.categories = new Collection();
+client.cooldowns = new Collection();
+client.events = new Collection();
 
-['events', 'commands', 'slashCommands', settings.antiCrash ? "antiCrash" : null]
-    .filter(Boolean)
-    .forEach(handler => {
-    require(`${process.cwd()}/handlers/${handler}`)(client, Discord);
-});
+//=====================================| HANDLERS |=====================================\\
 
-// ========================================| Database Reading Scripts |======================================= \\
+['events', 'commands', 'slashCommands', settings.antiCrash ? 'antiCrash' : null]
+.forEach(handler => {
+    require(`${process.cwd()}/handlers/${handler}`)(client);
+})
 
-// Database MongoDB
-const databases = require(`${process.cwd()}/databases/connect`);
-  
-// ========================================| MongoDB Schema Reading |======================================= \\
+//=====================================| DATABASE |=====================================\\
 
-client.ticketTranscript = mongoose.model('transcripts',
-  new mongoose.Schema({
-    Channel: String,
-    Content: Array
-  })
-)
+require(`${process.cwd()}/databases/connect.js`);
 
-// ========================================| Login to Discord bot Script |======================================= \\
+//=====================================| LOGIN TO BOT |=====================================\\
 
 client.login(process.env.TOKEN);
 

@@ -1,16 +1,11 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'rateLimit',
-    once: true,
-
-    async execute(client, Discord, rateLimitData) {
-        console.log(`[RATE LIMIT] `.bold.red + `${rateLimitData.method} ${rateLimitData.path}`.yellow);
-    }
+module.exports = async (client, rateLimitData) => {
+    console.log(`[RATE LIMIT] `.bold.red + `${rateLimitData.method} ${rateLimitData.path}`.yellow);
 }
 
 

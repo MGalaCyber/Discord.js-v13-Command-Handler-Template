@@ -1,6 +1,6 @@
 {
   "name": "discord.js-v13-handler",
-  "version": "5.0.0",
+  "version": "8.5.0",
   "description": "Discord.js v13 Handler Template. Open Source, with Slash Commands",
   "main": "index.js",
   "scripts": {
@@ -30,8 +30,8 @@
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "fs": "^0.0.1-security",
-    "glob": "^7.2.0",
-    "mongoose": "^6.2.9",
+    "moment": "^2.29.2",
+    "mongoose": "^6.3.0",
     "ms": "^2.1.3"
   }
 }

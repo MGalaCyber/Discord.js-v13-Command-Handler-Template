@@ -1,16 +1,12 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'disconnect',
-    once: true,
-
-    async execute(client, Discord) {
-        console.log(`[DISCONNECT] `.bold.red + `${client.user.tag}`.yellow);
-    }
+module.exports = async (client) => {
+    console.log(`[DISCONNECT] `.bold.red + `${client.user.tag}`.cyan + `has been disconnected from the Discord API.`.yellow);
+    client.destroy();
 }
 
 

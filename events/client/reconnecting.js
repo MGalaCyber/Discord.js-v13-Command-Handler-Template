@@ -1,16 +1,11 @@
-//=====================================| Import the Module |=====================================\\
+//=====================================| Import the Module |=====================================\
 
 const colors = require('colors');
 
-//=====================================| Code |=====================================\\
+//=====================================| Code |=====================================\
 
-module.exports = {
-    name: 'reconnecting',
-    once: true,
-
-    async execute(client, Discord) {
-        console.log(`[RECONNECTING] `.bold.red + `${client.user.tag}`.yellow);
-    }
+module.exports = async (client) => {
+    console.log(`[RECONNECTING] `.bold.red + `${client.user.tag}`.yellow);
 }
 
 

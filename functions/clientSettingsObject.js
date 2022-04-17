@@ -1,13 +1,26 @@
 //=====================================| Import the Module |=====================================\
 
-const colors = require('colors');
+const { Discord } = require('discord.js');
 
 //=====================================| Code |=====================================\
 
-module.exports = async (client, id, replayedEvents) => {
-    console.log(`[SHARD ID RESUME] `.bold.green + `${id}`.yellow);
-    console.log(`[SHARD RESUME] `.bold.green + `${replayedEvents}`.yellow);
+function clientSettingsObject() {
+    return {
+      shards: 'auto',
+      allowedMentions: {
+        parse: ['roles', 'users', 'everyone'],
+        repliedUser: false,
+      },
+      failIfNotExists: false,
+      partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+      intents: 32767,
+      messageCacheMaxSize: 50,
+      messageCacheLifetime: 60,
+      messageSweepInterval: 60,
+    }
 }
+
+module.exports = clientSettingsObject;
 
 
 /**
