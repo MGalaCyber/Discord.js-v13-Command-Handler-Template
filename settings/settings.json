@@ -1,8 +1,0 @@
-{
-    "antiCrash": true,
-    
-    "slashSettings": {
-        "globalSlash": true,
-        "guildSlashOnly": false
-    }
-}
