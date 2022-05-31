@@ -24,7 +24,7 @@
 
 ---------
 # Discord.js v13 Handler Template
-<h3>I suggest downloading the template handler in the Release column, to avoid bugs</h3>
+### I suggest downloading the template handler in the [Releases](https://github.com/MGalaCyber/Discord.js-v13-Handler-Template/releases) column, to avoid bugs
 
 ---------
 ## ⚙ Configuration
