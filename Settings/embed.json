@@ -1,0 +1,15 @@
+{
+  "color": "#11FF28",
+  "successcolor": "#00FF00",
+  "stanbycolor": "#FFFFFF",
+  "wrongcolor": "#FF0000",
+
+  "footertext": "Your Application Name | powered by galacyber.xyz",
+  "footericon": "",
+  "authoricon": "",
+
+  "loadingicon1": "https://cdn.discordapp.com/attachments/893741033081421845/904294347208527872/Loading.gif",
+  "loadingicon2": "",
+
+  "mongodbicon": "https://cdn.discordapp.com/attachments/921614775421640714/963071445351678042/mongodb.png"
+}

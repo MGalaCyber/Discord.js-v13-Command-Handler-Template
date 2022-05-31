@@ -1,0 +1,36 @@
+{
+
+"Application_Information": {
+        "TOKEN": "Config in .env file or set it in the environment variable in your hostinger project"
+},
+
+"DEVELOPER": {
+        "OWNER": "682211671728455702",
+        "CO_OWNER": ""
+},
+
+"SETTINGS": {
+        "PREFIX": ">",
+        "ErrorChannel": "908596544478011456",
+        "SuccessChannel": ""
+},
+
+"CONNECTIONS": {
+        "MONGO_URI": "Config in .env file or set it in the environment variable in your hostinger project",
+        "OAUTHO2_INVITE": "",
+        "WEBSITE": "",
+        "DISCORD_SUPPORT": ""
+
+},
+
+"SERVER_ID": {
+        "OFFICIAL": {
+                "Guild_ID_1": "",
+                "Guild_ID_2": ""
+        },
+        "TEST": {
+                "Guild_ID_1": "",
+                "Guild_ID_2": ""
+        }
+}
+}
