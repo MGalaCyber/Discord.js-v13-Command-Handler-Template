@@ -1,12 +1,11 @@
 {
   "name": "discord.js-v13-handler",
-  "version": "8.5.0",
-  "description": "Discord.js v13 Handler Template. Open Source, with Slash Commands",
+  "version": "10.0.0",
+  "description": "Discord.js v13 Handler Template. Open Source, with Slash Commands, and Mongoose Database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "test": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +13,10 @@
   },
   "keywords": [
     "Discordjsv13",
-    "Discord.js-v13",
     "SlashCommands",
     "v13",
-    "Nodejs"
+    "Nodejs",
+    "MongoDB"
   ],
   "author": "MGalaCyber",
   "license": "MIT",
@@ -28,10 +27,9 @@
   "dependencies": {
     "colors": "^1.4.0",
     "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
-    "moment": "^2.29.2",
-    "mongoose": "^6.3.0",
+    "mongoose": "^6.3.5",
     "ms": "^2.1.3"
   }
 }

@@ -10,57 +10,62 @@
  *                                                                                                  \\\\                  it is forbidden to delete the credit in the code!                   \\\\
  *                                                                                                  ////                                                                                      ////
  * @CREDITS : MGalaCyber Development                                                                //////////////////////////////////////////////////////////////////////////////////////////////
- * @VERSION : 8.5.0
+ * @VERSION : 10.0.0
  * @GITHUB : MGalaCyber
 **************************************************************************************| All Right Reserved! |**************************************************************************************/
 
 //=====================================| Import the Module |=====================================\\
 
-const { Discord, MessageEmbed, MessageAttachment, Client, Collection } = require('discord.js');
-const clientSettingsObject = require(`${process.cwd()}/functions/clientSettingsObject.js`);
-const settings = require(`${process.cwd()}/settings/settings.json`);
+const { MessageEmbed, MessageActionRow, MessageButton, MessageSelectmenu, MessageAttachment, Interaction, Discord, InteractionCreate, Client, Collection } = require('discord.js');
+const clientSettingsObject = require(`${process.cwd()}/Functions/clientSettingsObject.js`);
+const Settings = require(`${process.cwd()}/Settings/settings.json`);
+const Config = require(`${process.cwd()}/Settings/config.json`);
+const Emoji = require(`${process.cwd()}/Settings/emojis.json`);
+const Embed = require(`${process.cwd()}/Settings/embed.json`);
 const client = new Client(clientSettingsObject());
-const ms = require('ms');
 require('dotenv').config();
 require('colors');
+require('ms');
 
 //=====================================| DEPLOY SLASH COMMANDS |=====================================\\
 
 client.deploySlash = {
-    enabled: settings.globalSlash,
-    guild: settings.guildSlashOnly
-}
+    enabled: Settings.slashSettings.globalSlash,
+    guild: Settings.slashSettings.guildSlashOnly
+};
 
 //=====================================| COLLECTIONS |=====================================\\
 
-client.commands = new Collection();
 client.slashCommands = new Collection();
-client.buttons = new Collection();
-client.aliases = new Collection();
 client.categories = new Collection();
 client.cooldowns = new Collection();
+client.commands = new Collection();
+client.buttons = new Collection();
+client.aliases = new Collection();
 client.events = new Collection();
 
 //=====================================| HANDLERS |=====================================\\
 
-['events', 'commands', 'slashCommands', settings.antiCrash ? 'antiCrash' : null]
+['events', 'messageCommands', 'slashCommands', Settings.antiCrash ? 'antiCrash' : null]
 .forEach(handler => {
-    require(`${process.cwd()}/handlers/${handler}`)(client);
-})
+    require(`${process.cwd()}/Handlers/${handler}`)(client);
+});
 
 //=====================================| DATABASE |=====================================\\
 
-require(`${process.cwd()}/databases/connect.js`);
+require(`${process.cwd()}/Databases/connect.js`);
 
 //=====================================| LOGIN TO BOT |=====================================\\
 
 client.login(process.env.TOKEN);
 
 
+
+
 /**
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
-\\\\                  Bot Coded by GalaXd#9165                   \\\\
+\\\\               Handlers Coded by GalaXd#9165                 \\\\
 ////                                                             ////
 \\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
 ////                                                             ////

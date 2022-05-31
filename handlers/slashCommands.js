@@ -1,23 +1,23 @@
 //=====================================| Import the Module |=====================================\\
 
-const colors = require('colors');
-const { readdirSync } = require('fs');
+const { readdirSync, read } = require('fs');
+require('colors')
 
-// ========================================| Anti Crash System Script |======================================= \\
+// ========================================| Code |======================================= \\
 
 module.exports = async (client) => {
     const slashCommandsArray = [];
-    readdirSync(`${process.cwd()}/slashCommands/`)
+    readdirSync(`${process.cwd()}/SlashCommands/`)
     .forEach((dir) => {
-        readdirSync(`${process.cwd()}/slashCommands/${dir}/`)
-        .filter((file) => file.endsWith('.js'))
+        readdirSync(`${process.cwd()}/SlashCommands/${dir}/`).filter((file) => file.endsWith('.js'))
         .forEach((file) => {
-            let pull = require(`${process.cwd()}/slashCommands/${dir}/${file}`);
+            let pull = require(`${process.cwd()}/SlashCommands/${dir}/${file}`);
             client.slashCommands.set(pull.name, pull);
+
             slashCommandsArray.push(pull);
-        })
+        });
         console.log(`[SLASH COMMANDS] `.bold.green + `[${slashCommandsArray.length}] `.cyan + `in `.yellow + `${dir} `.magenta + `was loaded!`.yellow);
-    })
+    });
 
     client.on('ready', async () => {
         if (client.deploySlash.enabled) {
@@ -25,16 +25,18 @@ module.exports = async (client) => {
                 client.guilds.cache.get(client.deploySlash.guild).commands.set(slashCommandsArray);
             } else {
                 client.application.commands.set(slashCommandsArray);
-            }
-        }
-    })
-}
+            };
+        };
+    });
+};
+
+
 
 
 /**
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
-\\\\                  Bot Coded by GalaXd#9165                   \\\\
+\\\\               Handlers Coded by GalaXd#9165                 \\\\
 ////                                                             ////
 \\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
 ////                                                             ////
