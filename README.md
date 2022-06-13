@@ -37,6 +37,159 @@ MONGO_URI="your-mongoose-databases"
 - And then config other variables in `settings/config.json`
 
 ---------
+
+- Message Command Structures Example
+```js
+//=====================================| Import the Module |=====================================\\
+
+const { MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu, MessageAttachment } = require('discord.js');
+const { errorCmdLogs1 } = require(`${process.cwd()}/Functions/errorCmdLogs.js`);
+const { author, version } = require(`${process.cwd()}/package.json`);
+const Settings = require(`${process.cwd()}/Settings/settings.json`);
+const Config = require(`${process.cwd()}/Settings/config.json`);
+const Emoji = require(`${process.cwd()}/Settings/emojis.json`);
+const Embed = require(`${process.cwd()}/Settings/embed.json`);
+
+//=====================================| Code |=====================================\\
+
+module.exports = {
+    name: '', // Fill the Name of the command
+    aliases: [], // Fill the Aliases of the command
+    cooldown: 15, // Fill the Cooldowns of the command
+    category: '', // Fill the Category of the command
+    ownerOnly: false, // Fill true/false. Can only be used by owners registered with bots who can use this command
+    guildOnly: false, // Fille true/false. Can only be used on servers registered by bots that can use this command
+    nsfwOnly: false, // File true/false. Can only be used on nsfw channels that can use this command
+    botPerms: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'USE_EXTERNAL_EMOJIS', 'USE_EXTERNAL_STICKERS', 'SEND_MESSAGES_IN_THREADS'],
+    userPerms: ['VIEW_CHANNEL', 'SEND_MESSAGES'],
+    descriptions: '', // Fill the type of the command
+    usage: '', // Fill the main name command
+
+    async execute(message, args, client, prefix) {
+        try {
+        // Fill your code here
+        
+        } catch (error) {
+            errorCmdLogs1(client, message, error);
+        }
+    }
+}
+
+/**
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\               Handlers Coded by GalaXd#9165                 \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
+ */
+```
+- Slash Command Structures Example
+```js
+//=====================================| Import the Module |=====================================\
+
+const { MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu, MessageAttachment } = require('discord.js');
+const { errorCmdLogs2 } = require(`${process.cwd()}/Functions/errorCmdLogs.js`);
+const { author, version } = require(`${process.cwd()}/package.json`);
+const Settings = require(`${process.cwd()}/Settings/settings.json`);
+const Config = require(`${process.cwd()}/Settings/config.json`);
+const Emoji = require(`${process.cwd()}/Settings/emojis.json`);
+const Embed = require(`${process.cwd()}/Settings/embed.json`);
+
+//=====================================| Code |=====================================\
+
+module.exports = {
+    name: '', // Fill the Name of the command
+    cooldown: 15, // Fill the Cooldowns of the command
+    category: '', // Fill the Category of the command
+    nsfwOnly: false, // File true/false. Can only be used on nsfw channels that can use this command
+    botPerms: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'USE_EXTERNAL_EMOJIS', 'USE_APPLICATION_COMMAND', 'USE_EXTERNAL_STICKERS', 'SEND_MESSAGES_IN_THREADS'],
+    userPerms: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'USE_APPLICATION_COMMAND'],
+    description: '', // Fill the type of the command
+
+    run: async (client, interaction, args, prefix) => {
+        try {
+        // Fill your code here
+
+        } catch (error) {
+            errorCmdLogs2(client, interaction, error);
+        }
+    },
+};
+
+/**
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\               Handlers Coded by GalaXd#9165                 \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
+ */
+```
+- Event Structures Example
+```js
+//=====================================| Import the Module |=====================================\\
+
+const { MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu, MessageAttachment } = require('discord.js');
+const { author, version } = require(`${process.cwd()}/package.json`);
+const Settings = require(`${process.cwd()}/Settings/settings.json`);
+const Config = require(`${process.cwd()}/Settings/config.json`);
+const Emoji = require(`${process.cwd()}/Settings/emojis.json`);
+const Embed = require(`${process.cwd()}/Settings/embed.json`);
+
+//=====================================| Code |=====================================\\
+
+module.exports = async (client) => {
+  // Fill your code here
+
+};
+
+/**
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\               Handlers Coded by GalaXd#9165                 \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
+ */
+```
+- Handler Structures Example
+```js
+//=====================================| Import the Module |=====================================\\
+
+const { readdirSync } = require('fs');
+require('colors');
+
+// ========================================| Code |======================================= \\
+
+module.exports = async (client) => {
+  // Fill your code here
+
+};
+
+/**
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\               Handlers Coded by GalaXd#9165                 \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
+ */
+```
+
+---------
 # 💖 Support
 - [Saweria](https://saweria.co/Galaxy1274)
 - [Ko-Fi](https://ko-fi.com/MGalaCyber1274)
