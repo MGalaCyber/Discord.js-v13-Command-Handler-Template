@@ -197,7 +197,7 @@ module.exports = async (client) => {
 ---------
 # 💝 Credit
 If consider using this Template, make sure to credit me!
-### [MGalaCyber](https://github.com/MGalaCyber) | [Website](https://galacyber.vercel.app) | [Discord](https://discord.gg/2UshYsFfCP)
+### [MGalaCyber](https://github.com/MGalaCyber) | [Website](https://galacyber.vercel.app) | [Discord](https://discord.gg/VzGNhtmmfB)
 
 ---------
 # 📜 Licence
