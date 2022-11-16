@@ -19,6 +19,12 @@
   
 </div>
 
+<div align="center">
+
+[![DeepSource](https://deepsource.io/gh/MGalaCyber/Discord.js-v13-Command-Handler-Template.svg/?label=active+issues&show_trend=true&token=cuST_GrdsjQfMYmFv8OaUEvB)](https://deepsource.io/gh/MGalaCyber/Discord.js-v13-Command-Handler-Template/?ref=repository-badge)
+
+</div>
+
 ---------
 <p align="center">
   <a href="https://discord.gg/VzGNhtmmfB"><img src="https://discordapp.com/api/guilds/826406117658853417/widget.png?style=banner2" alt="Discord server"></a>
