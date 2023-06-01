@@ -35,6 +35,10 @@
 ### I suggest downloading the template handler in the [Releases](https://github.com/MGalaCyber/Discord.js-v13-Handler-Template/releases/latest) column, to avoid bugs
 
 ---------
+# 🔔 Notice!
+### Now for Decrypted version is Available on [Ko-Fi Shop](https://ko-fi.com/galaxd1274/shop). You can buy like Basic/Master version with Different Features. By buying my project products, you help me to keep motivated and passionate about developing other projects.
+
+---------
 ## ⚙ Configuration
 - ⚠ Never share your tokens or api keys publicly
 - Create and Modify `.env` and fill out the values:
